@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto'); // added
+@import "~@ngx-prism/rxjs/dist/themes/prism.css"; // added
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; // added
+@import "~@ngx-docs/example/dist/docs-example.scss"; // added
+
+body { font-family: 'Roboto', sans-serif; } // added

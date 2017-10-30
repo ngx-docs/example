@@ -1,0 +1,32 @@
+<div class="example-viewer">
+
+  <!-- title -->
+  <div class="example-viewer-title">
+    {{title}}
+    <span class="spacer"></span>
+    <button mat-button (click)="viewCode('basic')" matTooltip="View code">
+      <mat-icon>code</mat-icon>
+    </button>
+    <button mat-button (click)="debugCode('basic')" matTooltip="Debug code">
+      <mat-icon>bug_report</mat-icon>
+    </button>
+    <button mat-button (click)="openLocation()" matTooltip="{{launch?.tooltip}}">
+      <mat-icon>launch</mat-icon>
+    </button>
+  </div>
+
+  <!-- source -->
+  <div class="example-viewer-source" *ngIf="view.code.basic === true">
+    <mat-tab-group >
+      <mat-tab label="HTML" *ngIf="html"><prism-highlight [language]="'html'">{{html}}</prism-highlight></mat-tab>
+      <mat-tab label="TS" *ngIf="ts" ><prism-highlight [language]="'javascript'">{{ts}}</prism-highlight></mat-tab>
+      <mat-tab label="CSS" *ngIf="css" ><prism-highlight [language]="'css'">{{css}}</prism-highlight></mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <!-- body -->
+  <div class="example-viewer-body"><ng-content select=".body"></ng-content></div>
+
+  <!-- debug -->
+  <div class="example-viewer-debug" *ngIf="view.debug.basic === true"><ng-content select=".debug"></ng-content></div>
+</div>
