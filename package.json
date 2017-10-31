@@ -1,7 +1,7 @@
 {
   "name": "@ngx-docs/example",
   "version": "0.1.0",
-  "description": "Angular 2+ Components to create documentation on Angular Material.",
+  "description": "Angular 4+ module with example material tabs to display.",
   "author": "Ścibor Rudnicki <scibor.rudnicki@wwwdev.io> (http://ngx-docs.wwwwdev.io)",
   "homepage": "https://github.com/ngx-docs/example#readme",
   "main": "dist/bundle.umd.js",
@@ -24,6 +24,7 @@
     "prepublish": "",
     "start": "npm run build && npm run bundle",
     "start:clean": "npm run clean && npm start",
+    "start:clean:pack": "npm run clean && npm run start:clean && npm pack && mv *.tgz ./demo",
     "html": "cd src && copyfiles **/*.html *.html *.scss **/*.scss *.css **/*.css ../dist",
     "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
@@ -41,7 +42,7 @@
     "@angular/material": "^2.0.0-beta.12",
     "@angular/platform-browser": "^4.4.6",
     "@angular/platform-browser-dynamic": "^4.4.6",
-    "@ngx-prism/core": "^0.4.2",
+    "@ngx-prism/rxjs": "^0.1.5",
     "@types/jasmine": "^2.6.2",
     "@types/karma": "^1.7.1",
     "@types/node": "^8.0.47",
@@ -63,15 +64,20 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.50.0",
     "rollup-plugin-angular": "^0.5.3",
-    "rollup-plugin-commonjs": "^8.2.5",
+    "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-typescript": "^0.8.1",
     "rollup-plugin-uglify": "^2.0.1",
     "rxjs": "^5.5.2",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3",
-    "uglify-es": "^3.1.5",
+    "uglify-es": "^3.1.6",
     "zone.js": "^0.8.18"
+  },
+  "peerDependencies": {
+    "@angular/cdk": "2.0.0-beta.12",
+    "@angular/material": "^2.0.0-beta.12",
+    "@ngx-prism/rxjs": "^0.1.5"
   },
   "keywords": [
     "Angular"
