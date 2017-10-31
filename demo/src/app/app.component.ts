@@ -80,9 +80,11 @@ export class InputFormExample {}
 
   constructor(public formBuilder: FormBuilder) {
     this.form = formBuilder.group({
-      firstname: 'none',
-      lastname: '',
-      address: ''
+      firstname: 'Ścibor',
+      lastname: 'Rudnicki',
+      address: 'Głuszyna',
+      city: 'Poznań',
+      postalCode: '61-329'
     });
   }
 
