@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconModule, MatTabsModule, MatTooltipModule } from '@angular/material';
 
 // @ngx
-import { PrismModule } from '@ngx-prism/core';
+import { PrismModule } from '@ngx-prism/rxjs';
 
 // internal
 import { DocsExampleComponent } from './docs-example.component';
