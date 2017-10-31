@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // added
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // @ngx
@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
     FormsModule, // added
     ReactiveFormsModule,
     DocsExampleModule, // added
+    MatButtonModule, // added
     MatInputModule // added
   ],
   providers: [],
