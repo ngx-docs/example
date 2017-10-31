@@ -1,6 +1,6 @@
 {
   "name": "@ngx-docs/example",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular 4+ module with example material tabs to display.",
   "author": "Ścibor Rudnicki <scibor.rudnicki@wwwdev.io> (http://ngx-docs.wwwwdev.io)",
   "homepage": "https://github.com/ngx-docs/example#readme",
