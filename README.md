@@ -47,7 +47,7 @@ Clone this repository:
 git clone https://github.com/ngx-docs/example.git
 ```
 
-Go to `demo` folder and by opening your command line do the following:
+Go to `demo` folder and by opening your command line write the following:
 
 ```bash
 npm i && npm start
@@ -59,22 +59,32 @@ Open http://localhost:4200/ in your browser.
 
 ## Installation
 
-To install, run:
+First you need to install package `@ngx-docs/example` with `angular` module from `npm`, with the following command:
 
 ```bash
-npm install @ngx-docs/example --save
+npm i --save @ngx-docs/example
 ```
+
+In the next step, add `peerDependencies` packages with the following command:
+
+```bash
+npm i --save @angular/cdk@2.0.0-beta.12 @angular/material@2.0.0-beta.12 @ngx-prism/rxjs@0.1.5
+```
+
+You are ready to use it.
 
 ## Usage
 
-To `app.module.ts` add the following lines:
+Now, import new installed modules into your, like in below `@angular/cli` example:
+
+File `app.module.ts`, forms are added only for this example:
 
 ```typescript
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // added
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule } from '@angular/material'; // added
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // added
+import { MatButtonModule, MatInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // @ngx
 import { DocsExampleModule } from '@ngx-docs/example'; // added
@@ -93,6 +103,7 @@ import { AppComponent } from './app.component';
     FormsModule, // added
     ReactiveFormsModule,
     DocsExampleModule, // added
+    MatButtonModule, // added
     MatInputModule // added
   ],
   providers: [],
@@ -102,11 +113,10 @@ export class AppModule { }
 
 ```
 
+Then, in component, and this `@angular/cli` example `app.component.ts` file, do:
 
-In your component `app.component.ts` file:
 ```typescript
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -179,50 +189,32 @@ export class InputFormExample {}
 
 .example-full-width {
   width: 100%;
+}`;
 }
-  `;
-
-  form: FormGroup;
-  payload: string;
-
-  constructor(public formBuilder: FormBuilder) {
-    this.form = formBuilder.group({
-      firstname: 'none',
-      lastname: '',
-      address: ''
-    });
-  }
-
-  submit(form) {
-    this.payload = JSON.stringify(this.form.value);
-    return false;
-  }
-}
-
 ```
 
-In `app.component.html` write the following code:
+Finally, in your html, and in this `@angular/cli` example `app.component.html`, write the following code:
 
 ```html
 <ngx-docs-example [css]="css" [html]="html" [launch]="launch" [title]="title" [ts]="ts">
   <div class="body">
-    <form class="example-form" (ngSubmit)="submit(form)" [formGroup]="form">
+    <form class="example-form">
       <mat-form-field class="example-full-width">
-        <input type="text" matInput placeholder="Company (disabled)" disabled value="Google">
+        <input matInput placeholder="Company (disabled)" disabled value="Google">
       </mat-form-field>
 
       <table class="example-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="example-full-width">
-          <input type="text" name="firstname" matInput placeholder="First name" formControlName="firstname" required>
+          <input matInput placeholder="First name">
         </mat-form-field></td>
         <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="Long Last Name That Will Be Truncated" formControlName="lastname">
+          <input matInput placeholder="Long Last Name That Will Be Truncated">
         </mat-form-field></td>
       </tr></table>
 
       <p>
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address" formControlName="address">1600 Amphitheatre Pkwy</textarea>
+          <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="Address 2"></textarea>
@@ -242,15 +234,20 @@ In `app.component.html` write the following code:
         </mat-form-field></td>
       </tr>
       </table>
-      <input type="submit" value="Submit" />
     </form>
   </div>
   <div class="debug">
-    <h3>Submitted data:</h3>
-    {{payload}}
+    <h5>[launch]</h5>
+    {{launch | json}}
+    <h5>postalCode</h5>
+    {{postalCode | json}}
   </div>
 </ngx-docs-example>
 ```
+
+Congratulations, if everything has been done perfectly, you have table with examples to create code documentation.
+Anyway, if you still have any problems to integrate it in your project, check `demo` folder in this repository, perhaps it will help you figure it out.
+
 
 ## Style guide
 
