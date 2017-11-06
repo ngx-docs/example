@@ -1,7 +1,5 @@
 # @ngx-docs/example
 
-Angular 4+ module with example material tabs to display.
-
 [![GitHub version](https://badge.fury.io/gh/ngx-docs%2Fexample.svg)](https://badge.fury.io/gh/ngx-docs%2Fexample)
 [![npm version](https://badge.fury.io/js/%40ngx-docs%2Fexample.svg)](https://badge.fury.io/js/%40ngx-docs%2Fexample)
 
@@ -10,9 +8,16 @@ Angular 4+ module with example material tabs to display.
 [![GitHub stars](https://img.shields.io/github/stars/ngx-docs/example.svg)](https://github.com/ngx-docs/example/stargazers)
 [![GitHub license](https://img.shields.io/github/license/ngx-docs/example.svg)](https://github.com/ngx-docs/example/blob/master/LICENSE)
 
+Angular 4+ module to display code examples.
 
 Pros:
+* **AOT** (Ahead Of Time Compilation) Package.
+* **MIT** License - you can use it commercially.
 * Component changeDetection is set to `OnPush`, it gives better overall performance.
+* Live `@angular/cli` usage demonstration and demo inside repository.
+* No known vulnerabilities found by `snyk.io`.
+* It uses `@angular/material`.
+
 
 Cons:
 * Need to change `@Input()` instance to have changes visible on template.
@@ -59,7 +64,7 @@ Open http://localhost:4200/ in your browser.
 
 ## Installation
 
-First you need to install package `@ngx-docs/example` with `angular` module from `npm`, with the following command:
+First, you need to install package `@ngx-docs/example` with `angular` module from `npm`, with the following command:
 
 ```bash
 npm i --save @ngx-docs/example
@@ -68,7 +73,7 @@ npm i --save @ngx-docs/example
 In the next step, add `peerDependencies` packages with the following command:
 
 ```bash
-npm i --save @angular/cdk@2.0.0-beta.12 @angular/material@2.0.0-beta.12 @ngx-prism/rxjs@0.1.5
+npm i --save @angular/cdk@2.0.0-beta.12 @angular/material@2.0.0-beta.12 @ngx-prism/core@1.0.0
 ```
 
 You are ready to use it.
@@ -245,8 +250,8 @@ Finally, in your html, and in this `@angular/cli` example `app.component.html`, 
 </ngx-docs-example>
 ```
 
-Congratulations, if everything has been done perfectly, you have table with examples to create code documentation.
-Anyway, if you still have any problems to integrate it in your project, check `demo` folder in this repository, perhaps it will help you figure it out.
+If everything has been done perfectly, you have examples to create **code** documentation.
+If you still have any problems to integrate it in your project, check `demo` folder in this repository, perhaps it will help you figure it out.
 
 
 ## Style guide
