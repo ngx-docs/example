@@ -7,7 +7,7 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 import { By } from '@angular/platform-browser';
 import { TestBed, async, inject, ComponentFixture } from '@angular/core/testing';
 
-import { PrismModule } from '@ngx-prism/rxjs';
+import { PrismModule } from '@ngx-prism/core';
 import { DocsExampleComponent } from './docs-example.component';
 
 beforeAll(() => {
