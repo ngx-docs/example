@@ -4,19 +4,19 @@
   <div class="example-viewer-title">
     {{title}}
     <span class="spacer"></span>
-    <button mat-button (click)="viewCode('basic')" mdTooltip="View code">
+    <button mat-button (click)="switchActive('code')" matTooltip="{{view?.debug?.tooltip}}">
       <mat-icon>code</mat-icon>
     </button>
-    <button mat-button (click)="debugCode('basic')" mdTooltip="Debug code">
+    <button mat-button (click)="switchActive('debug')" matTooltip="{{view?.debug?.tooltip}}">
       <mat-icon>bug_report</mat-icon>
     </button>
-    <button mat-button (click)="openLocation()" matTooltip="{{launch?.tooltip}}">
+    <button *ngIf="launch"  mat-button (click)="openLocation()" matTooltip="{{launch?.tooltip}}">
       <mat-icon>launch</mat-icon>
     </button>
   </div>
 
   <!-- source -->
-  <div class="example-viewer-source" *ngIf="view.code.basic === true">
+  <div class="example-viewer-source" *ngIf="view?.code?.active === true">
     <mat-tab-group >
       <mat-tab label="HTML" *ngIf="html"><prism-highlight [language]="'html'">{{html}}</prism-highlight></mat-tab>
       <mat-tab label="TS" *ngIf="ts" ><prism-highlight [language]="'javascript'">{{ts}}</prism-highlight></mat-tab>
@@ -28,5 +28,5 @@
   <div class="example-viewer-body"><ng-content select=".body"></ng-content></div>
 
   <!-- debug -->
-  <div class="example-viewer-debug" *ngIf="view.debug.basic === true"><ng-content select=".debug"></ng-content></div>
+  <div class="example-viewer-debug" *ngIf="view?.debug?.active === true"><ng-content select=".debug"></ng-content></div>
 </div>
