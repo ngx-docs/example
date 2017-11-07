@@ -18,9 +18,9 @@
   <!-- source -->
   <div class="example-viewer-source" *ngIf="view?.code?.active === true">
     <mat-tab-group >
-      <mat-tab label="HTML" *ngIf="html"><prism-highlight [language]="'html'">{{html}}</prism-highlight></mat-tab>
-      <mat-tab label="TS" *ngIf="ts" ><prism-highlight [language]="'javascript'">{{ts}}</prism-highlight></mat-tab>
-      <mat-tab label="CSS" *ngIf="css" ><prism-highlight [language]="'css'">{{css}}</prism-highlight></mat-tab>
+      <mat-tab label="HTML" *ngIf="html"><prism-highlight [language]="'html'" [code]="html"></prism-highlight></mat-tab>
+      <mat-tab label="TS" *ngIf="ts" ><prism-highlight [language]="'javascript'" [code]="ts"></prism-highlight></mat-tab>
+      <mat-tab label="CSS" *ngIf="css" ><prism-highlight [language]="'css'" [code]="css"></prism-highlight></mat-tab>
     </mat-tab-group>
   </div>
 
