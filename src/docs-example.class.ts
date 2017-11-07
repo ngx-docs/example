@@ -1,24 +1,29 @@
 
+import { ViewInterface } from './docs-example.interface';
+
 /**
  * @export
  * @abstract
  * @class DocsExampleClass
  */
 export abstract class DocsExampleClass {
-  view = {
-    code: {
-      basic: false,
-      examples: false
-    },
-    debug: {
-      basic: false,
-      examples: false
-    }
-  };
-  public debugCode(property: string): boolean {
-    return this.view.debug[property] = (this.view.debug[property] === true) ? false : true;
+  public view: ViewInterface;
+
+  /**
+   * Creates an instance of DocsExampleClass.
+   * @param {ViewInterface} view
+   * @memberof DocsExampleClass
+   */
+  constructor(view: ViewInterface) {
+    this.view = view;
   }
-  public viewCode(property: string): boolean {
-    return this.view.code[property] = (this.view.code[property] === true) ? false : true;
+
+  /**
+   * @param {string} property
+   * @returns {boolean}
+   * @memberof DocsExampleClass
+   */
+  switchActive(property: string): boolean {
+    return this.view[property].active = (this.view[property].active === true) ? false : true;
   }
 }
