@@ -1,6 +1,6 @@
 {
   "angularCompilerOptions": {
-    "genDir": "./aot",
+    "preserveWhitespaces": false,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "skipMetadataEmit" : false
