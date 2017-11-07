@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material';
 
 // @ngx
 import { DocsExampleModule } from '@ngx-docs/example'; // added
@@ -20,9 +21,13 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule, // added
     ReactiveFormsModule,
-    DocsExampleModule, // added
+    DocsExampleModule.forRoot({
+      border: '1px solid red'
+    }), // added
+
     MatButtonModule, // added
-    MatInputModule // added
+    MatInputModule, // added
+    MatSidenavModule // added
   ],
   providers: [],
   bootstrap: [AppComponent]

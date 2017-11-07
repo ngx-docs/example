@@ -1,47 +1,104 @@
-<ngx-docs-example [css]="css" [html]="html" [launch]="launch" [title]="title" [ts]="ts">
-  <div class="body">
-    <form class="example-form" (ngSubmit)="submit(form)" [formGroup]="form">
+<mat-sidenav-container>
+  <!-- primary content -->
+  <div class="my-content">
+    <ngx-docs-example
+      [config]="config"
+      [css]="css"
+      [html]="html"
+      [launch]="launch"
+      [title]="title"
+      [ts]="ts"
+    >
+      <div class="body">
+        <form class="example-form" (ngSubmit)="submit(form)" [formGroup]="form">
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Company (disabled)" disabled value="Google">
+          </mat-form-field>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+              <input type="text" name="firstname" matInput placeholder="First name" formControlName="firstname" required>
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="Long Last Name That Will Be Truncated" formControlName="lastname">
+            </mat-form-field></td>
+          </tr></table>
+
+          <p>
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="Address" formControlName="address">1600 Amphitheatre Pkwy</textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="Address 2"></textarea>
+            </mat-form-field>
+          </p>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="City" formControlName="city">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="State">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="postalCode">
+              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field></td>
+          </tr>
+          </table>
+          <button type="submit" mat-raised-button color="primary">Submit</button>
+        </form>
+      </div>
+      <div class="debug">
+        <h3>Submitted data:</h3>
+        {{payload}}
+      </div>
+    </ngx-docs-example>
+
+  </div>
+
+  <!-- sidenav -->
+  <mat-sidenav mode="side" opened="true" align="end">
+    <!-- sidenav content -->
+    <form class="example-form" (ngSubmit)="submitComponent(formComponent)" [formGroup]="formComponent">
       <mat-form-field class="example-full-width">
-        <input type="text" matInput placeholder="Company (disabled)" disabled value="Google">
+        <input matInput placeholder="title" formControlName="title" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="css" formControlName="css" matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="html" formControlName="html" matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="ts" formControlName="ts" matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="5"></textarea>
       </mat-form-field>
 
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width">
-          <input type="text" name="firstname" matInput placeholder="First name" formControlName="firstname" required>
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="Long Last Name That Will Be Truncated" formControlName="lastname">
-        </mat-form-field></td>
-      </tr></table>
-
-      <p>
+      <h3>
+        @Input('launch')
+      </h3>
+      <div formGroupName="launch">
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address" formControlName="address">1600 Amphitheatre Pkwy</textarea>
+          <input matInput placeholder="location" formControlName="location" />
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address 2"></textarea>
+          <input matInput placeholder="tooltip" formControlName="tooltip" />
         </mat-form-field>
-      </p>
+      </div>
 
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="City" formControlName="city">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="State">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
-          <input matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="postalCode">
-          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-        </mat-form-field></td>
-      </tr>
-      </table>
-      <button type="submit" mat-raised-button color="primary">Submit</button>
+      <h3>
+        @Input('config')
+      </h3>
+      <div formGroupName="config">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="box_shadow" formControlName="box_shadow" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="border" formControlName="border" />
+        </mat-form-field>
+      </div>
+      <button type="submit" mat-raised-button color="primary">Submit</button> <span>Check your console</span>
     </form>
-  </div>
-  <div class="debug">
-    <h3>Submitted data:</h3>
-    {{payload}}
-  </div>
-</ngx-docs-example>
-
+  </mat-sidenav>
+</mat-sidenav-container>

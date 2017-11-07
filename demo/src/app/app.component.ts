@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+/**
+ * @export
+ * @class AppComponent
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  config = {
+    box_shadow: '0 0 15px #bfbfbf',
+    border: '1px solid #d72000'
+  };
   title = 'Inputs in a form';
   launch = {
     location: 'https://plnkr.co/edit/?p=preview',
@@ -76,8 +84,14 @@ export class InputFormExample {}
   `;
 
   form: FormGroup;
+  formComponent: FormGroup;
   payload: string;
 
+  /**
+   * Creates an instance of AppComponent.
+   * @param {FormBuilder} formBuilder
+   * @memberof AppComponent
+   */
   constructor(public formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       firstname: 'Ścibor',
@@ -86,10 +100,39 @@ export class InputFormExample {}
       city: 'Poznań',
       postalCode: '61-329'
     });
+
+    this.formComponent = formBuilder.group({
+      // config
+      config: formBuilder.group({
+        border: this.config.border,
+        box_shadow: this.config.box_shadow
+      }),
+
+      // rest
+      css: this.css,
+      html: this.html,
+      launch: formBuilder.group({
+        location: this.launch.location,
+        tooltip: this.launch.tooltip
+      }),
+      title: this.title,
+      ts: this.ts
+    });
   }
 
   submit(form) {
-    this.payload = JSON.stringify(this.form.value);
+    this.payload = JSON.stringify(form.value);
+    console.log(JSON.stringify(form.value));
+    return false;
+  }
+
+  submitComponent(form) {
+    console.log(JSON.stringify(form.value));
+    for (const key in form.value) {
+      if (key) {
+        this[key] = form.value[key];
+      }
+    }
     return false;
   }
 }
