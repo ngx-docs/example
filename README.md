@@ -13,6 +13,7 @@ Angular 4+ module to display code examples.
 Pros:
 * **AOT** (Ahead Of Time Compilation) Package.
 * **MIT** License - you can use it commercially.
+* Possibility to style with css `--var` by `config` or `forRoot`.
 * Component changeDetection is set to `OnPush`, it gives better overall performance.
 * Live `@angular/cli` usage demonstration and demo inside repository.
 * No known vulnerabilities found by `snyk.io`.
@@ -32,6 +33,7 @@ Image preview:
 ## Table of contents
 * [Demonstration](#demonstration)
 * [Installation](#installation)
+* [Inputs](#inputs)
 * [Usage](#usage)
 * [Style guide](#style-guide)
 * [Git](#git)
@@ -77,6 +79,20 @@ npm i --save @angular/cdk@2.0.0-beta.12 @angular/material@2.0.0-beta.12 @ngx-pri
 ```
 
 You are ready to use it.
+
+
+## Inputs
+
+All `@Input` properties in table below.
+
+| Name | Type | Description |
+|----------|----------------|---------------------------|
+| config | PackageConfigInterface {box_shadow: string, border: string} | Example window `css` style property. |
+| css  | string | Expanded **example** `css` style. |
+| html | string | Expanded **example** `html` code. |
+| launch | LaunchInterface {location: string, tooltip: string} | Launch right top corner button `location` and `tooltip`. |
+| title | string | Title of **example**. |
+| ts | string | Expanded **example** `typescript` code. |
 
 ## Usage
 
