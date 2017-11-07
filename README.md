@@ -123,7 +123,16 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule, // added
     ReactiveFormsModule,
-    DocsExampleModule, // added
+
+    // @ngx-docs/example 
+    DocsExampleModule.forRoot({
+      border: '1px solid red',
+      box_shadow: '0 0 225px red'
+    }), // added
+
+    // or just simple
+    // DocsExampleModule,
+
     MatButtonModule, // added
     MatInputModule // added
   ],
@@ -131,13 +140,13 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 ```
 
 Then, in component, and this `@angular/cli` example `app.component.ts` file, do:
 
 ```typescript
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -145,11 +154,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  config = { box_shadow: '0 0 15px #bfbfbf', border: '1px solid #d72000' };
   title = 'Inputs in a form';
-  launch = {
-    location: 'https://plnkr.co/edit/?p=preview',
-    tooltip: `Edit in plunker`
-  };
+  launch = { location: 'https://plnkr.co/edit/?p=preview', tooltip: `Edit in plunker` };
   html = `
 <form class="example-form">
   <mat-form-field class="example-full-width">
@@ -210,32 +217,59 @@ export class InputFormExample {}
 
 .example-full-width {
   width: 100%;
-}`;
 }
+  `;
+
+  form: FormGroup;
+  payload: string;
+
+  constructor(public formBuilder: FormBuilder) {
+    this.form = formBuilder.group({
+      firstname: 'Ścibor',
+      lastname: 'Rudnicki',
+      address: 'Głuszyna',
+      city: 'Poznań',
+      postalCode: '61-329'
+    });
+
+  submit(form) {
+    this.payload = JSON.stringify(form.value);
+    console.log(JSON.stringify(form.value));
+    return false;
+  }
+}
+
 ```
 
 Finally, in your html, and in this `@angular/cli` example `app.component.html`, write the following code:
 
 ```html
-<ngx-docs-example [css]="css" [html]="html" [launch]="launch" [title]="title" [ts]="ts">
+<ngx-docs-example
+  [config]="config"
+  [css]="css"
+  [html]="html"
+  [launch]="launch"
+  [title]="title"
+  [ts]="ts"
+>
   <div class="body">
-    <form class="example-form">
+    <form class="example-form" (ngSubmit)="submit(form)" [formGroup]="form">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Company (disabled)" disabled value="Google">
+        <input type="text" matInput placeholder="Company (disabled)" disabled value="Google">
       </mat-form-field>
 
       <table class="example-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="First name">
+          <input type="text" name="firstname" matInput placeholder="First name" formControlName="firstname" required>
         </mat-form-field></td>
         <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="Long Last Name That Will Be Truncated">
+          <input matInput placeholder="Long Last Name That Will Be Truncated" formControlName="lastname">
         </mat-form-field></td>
       </tr></table>
 
       <p>
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+          <textarea matInput placeholder="Address" formControlName="address">1600 Amphitheatre Pkwy</textarea>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="Address 2"></textarea>
@@ -244,24 +278,23 @@ Finally, in your html, and in this `@angular/cli` example `app.component.html`, 
 
       <table class="example-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="City">
+          <input matInput placeholder="City" formControlName="city">
         </mat-form-field></td>
         <td><mat-form-field class="example-full-width">
           <input matInput placeholder="State">
         </mat-form-field></td>
         <td><mat-form-field class="example-full-width">
-          <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+          <input matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="postalCode">
           <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
         </mat-form-field></td>
       </tr>
       </table>
+      <button type="submit" mat-raised-button color="primary">Submit</button>
     </form>
   </div>
   <div class="debug">
-    <h5>[launch]</h5>
-    {{launch | json}}
-    <h5>postalCode</h5>
-    {{postalCode | json}}
+    <h3>Submitted data:</h3>
+    {{payload}}
   </div>
 </ngx-docs-example>
 ```
