@@ -4,7 +4,7 @@
   --ngx-docs-example-border: 1px solid rgba(0,0,0,.03);
 }
 
-.example-viewer {
+.ngx-docs-example {
   margin: 3px 3px 32px 3px;
   border-spacing: 0;
   border-collapse: collapse;
@@ -16,7 +16,7 @@
     background-color: #ffffff;
   }
 
-  > .example-viewer-title {
+  > .ngx-docs-example-title {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -32,7 +32,7 @@
       min-width: 44px
     }
   }
-  > .example-viewer-source {
+  > .ngx-docs-example-source {
     .mat-tab-body {
       display: block;
       width: 100%;
@@ -40,7 +40,7 @@
       box-sizing: border-box;
     }
   }
-  > .example-viewer-debug {
+  > .ngx-docs-example-debug {
     display: block;
     width: 100%;
     padding: 16px 32px;
@@ -48,7 +48,7 @@
     border-top: 1px solid #f1f1f1;
     background: rgba(0,0,0,.03);
   }
-  > .example-viewer-body {
+  > .ngx-docs-example-body {
     display: block;
     width: 100%;
     padding: 32px 16px;
