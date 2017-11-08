@@ -11,7 +11,6 @@ import { PACKAGE_CONFIG_TOKEN } from './docs-example.module';
  * @export
  * @class DocsExampleComponent
  * @extends {DocsExampleClass}
- * @implements {OnInit}
  */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,6 +45,8 @@ export class DocsExampleComponent extends DocsExampleClass {
 
   /**
    * Creates an instance of DocsExampleComponent.
+   * @param {ElementRef} element
+   * @param {PackageConfigInterface} [config]
    * @memberof DocsExampleComponent
    */
   constructor(element: ElementRef, @Optional() @Inject(PACKAGE_CONFIG_TOKEN) config?: PackageConfigInterface) {
