@@ -63,7 +63,7 @@ module.exports = function(config) {
 
     rollupPreprocessor: {
       // will help to prevent conflicts between different tests entries
-      name: 'ngx-docs.material',
+      name: 'ngx-docs.example',
       format: 'umd',
       sourcemap: 'inline',
       // rollup settings. See Rollup documentation
