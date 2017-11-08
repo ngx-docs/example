@@ -71,14 +71,14 @@
   dependencies:
     tslib "^1.7.1"
 
-"@ngx-prism/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-prism/core/-/core-1.0.0.tgz#095dfebfc9a1772c580fd86586125a4cafef09e3"
+"@ngx-prism/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-prism/core/-/core-1.0.1.tgz#6f5a221e121b36c0332575a37ac76be094a04799"
   dependencies:
     "@types/lodash-es" "^4.17.0"
     "@types/prismjs" "^1.6.5"
     lodash-es "^4.17.4"
-    prismjs "^1.8.3"
+    prismjs "^1.8.4"
 
 "@types/bluebird@*":
   version "3.5.17"
@@ -109,9 +109,9 @@
   version "8.0.47"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
 
-"@types/node@^8.0.49":
-  version "8.0.49"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.49.tgz#417f86ab4829c629fe561779ee48751e0fe2a11b"
+"@types/node@^8.0.50":
+  version "8.0.50"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.50.tgz#dc545448e128c88c4eec7cd64025fcc3b7604541"
 
 "@types/prismjs@^1.6.5":
   version "1.6.5"
@@ -2068,9 +2068,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prismjs@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.8.3.tgz#4a3d140be5f2614a8987ca2330733a40d8ad207b"
+prismjs@^1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.8.4.tgz#573cc7a14c2c06566e1eca20d813f5ae55db80d2"
   optionalDependencies:
     clipboard "^1.5.5"
 
@@ -2391,9 +2391,9 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
-rollup@^0.50.0:
-  version "0.50.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.50.0.tgz#4c158f4e780e6cb33ff0dbfc184a52cc58cd5f3b"
+rollup@^0.51.1:
+  version "0.51.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.51.1.tgz#16288ceafbed0a629d3a127c1e92e503f182e8b1"
 
 rxjs@^5.5.2:
   version "5.5.2"
