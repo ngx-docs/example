@@ -1,7 +1,7 @@
-<div class="example-viewer">
+<div class="ngx-docs-example">
 
   <!-- title -->
-  <div class="example-viewer-title">
+  <div class="ngx-docs-example-title">
     {{title}}
     <span class="spacer"></span>
     <button mat-button (click)="switchActive('code')" matTooltip="{{view?.debug?.tooltip}}">
@@ -16,7 +16,7 @@
   </div>
 
   <!-- source -->
-  <div class="example-viewer-source" *ngIf="view?.code?.active === true">
+  <div class="ngx-docs-example-source" *ngIf="view?.code?.active === true">
     <mat-tab-group >
       <mat-tab label="HTML" *ngIf="html"><prism-highlight [language]="'html'" [code]="html"></prism-highlight></mat-tab>
       <mat-tab label="TS" *ngIf="ts" ><prism-highlight [language]="'javascript'" [code]="ts"></prism-highlight></mat-tab>
@@ -25,8 +25,8 @@
   </div>
 
   <!-- body -->
-  <div class="example-viewer-body"><ng-content select=".body"></ng-content></div>
+  <div class="ngx-docs-example-body"><ng-content select=".body"></ng-content></div>
 
   <!-- debug -->
-  <div class="example-viewer-debug" *ngIf="view?.debug?.active === true"><ng-content select=".debug"></ng-content></div>
+  <div class="ngx-docs-example-debug" *ngIf="view?.debug?.active === true"><ng-content select=".debug"></ng-content></div>
 </div>
