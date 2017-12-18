@@ -32,7 +32,7 @@ export default {
     // footer: ,
     // intro:,
     // outro: ,
-    sourcemap: true, // true | inline
+    sourcemap: 'inline', // true | inline
     // sourcemapFile: ,
     // interop: ,
 
@@ -44,7 +44,7 @@ export default {
   },
   onwarn,
   plugins: [
-    angular({
+    angular((process.env.BUILD === 'production') ? {
       preprocessors: {
         template: template => minifyHtml(template, htmlminOpts),
         style: scss => {
@@ -52,7 +52,7 @@ export default {
           return cssmin.minify(css).styles;
         },
       }
-    }),
+    } : {}),
     commonjs(),
     nodeResolve({
       // use "module" field for ES6 module if possible
@@ -95,7 +95,7 @@ export default {
     typescript({
       typescript: require('./node_modules/typescript')
     }),
-    uglify({}, minify)
+    (process.env.BUILD === 'production') ? uglify({}, minify) : function() { }
   ]
 };
 
