@@ -3,6 +3,8 @@
  * @interface PackageConfigInterface
  */
 export interface PackageConfigInterface {
-  box_shadow?: string;
   border?: string;
+  body_font_size?: string;
+  box_shadow?: string;
+  source_font_size?: string;
 }
