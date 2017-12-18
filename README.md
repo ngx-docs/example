@@ -12,12 +12,13 @@ Angular 4+ module to display code examples.
 
 Pros:
 * **AOT** (Ahead Of Time Compilation) Package.
-* **MIT** License - you can use it commercially.
-* Possibility to style with css `--var` by `config` or `forRoot`.
-* Component changeDetection is set to `OnPush`, it gives better overall performance.
+* **MIT** License - can be used commercially.
+* Style with css `--var` by `config` or `forRoot`.
+* Component changeDetection is set to `OnPush` - it gives better overall performance.
 * Live `@angular/cli` usage demonstration and demo inside repository.
 * No known vulnerabilities found by `snyk.io`.
-* It uses `@angular/material`.
+* It uses [@angular/material](https://github.com/angular/material2).
+* Responsive design with [@angular/flex-layout](https://github.com/angular/flex-layout).
 
 
 Cons:
@@ -87,12 +88,23 @@ All `@Input` properties in table below.
 
 | Name | Type | Description |
 |----------|----------------|---------------------------|
-| config | PackageConfigInterface {box_shadow: string, border: string} | Example window `css` style property. |
+| config | PackageConfigInterface | Example window `css` style property. |
 | css  | string | Expanded **example** `css` style. |
 | html | string | Expanded **example** `html` code. |
 | launch | LaunchInterface {location: string, tooltip: string} | Launch right top corner button `location` and `tooltip`. |
 | title | string | Title of **example**. |
 | ts | string | Expanded **example** `typescript` code. |
+
+
+**PackageConfigInterface**
+
+| Name | Type | Default |
+|----------|----------------|---------------------------|
+| border  | string | 1px solid rgba(0,0,0,.03) |
+| body-font-size  | string | 0.875em |
+| box_shadow  | string | 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12) |
+| source-font-size  | string | 0.875em |
+
 
 ## Usage
 
