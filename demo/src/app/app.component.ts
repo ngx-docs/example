@@ -11,11 +11,31 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  config = {
-    box_shadow: '0 0 15px #bfbfbf',
-    border: '1px solid #d72000'
+  api = {
+    body: [
+      {
+        name: 'config', type: `PackageConfigInterface | undefined
+        { border?: string; body_font_size?: string; box_shadow?: string; source_font_size?: string; }`,
+        description: 'Style some css.'
+      },
+      { name: 'css', type: 'string', description: 'View code tab **css**.' },
+      { name: 'html', type: 'string', description: 'View code tab **html**.' },
+      {
+        name: 'launch', type: `LaunchInterface | undefined
+        { border?: string; body_font_size?: string; box_shadow?: string; source_font_size?: string; }`,
+        description: 'Link to another website with example.'
+      },
+      { name: 'title', type: 'string', description: 'Title of example.' },
+      { name: 'ts', type: 'string', description: 'View code tab **ts**.' }
+    ],
+    description: 'All @input()',
+    header: [
+      'Name', 'Type', 'Description'
+    ],
+    title: '@ngx-docs/example properties'
   };
-  title = 'Inputs in a form';
+  sidenavMode: 'side';
+  title = '@ngx-docs/example package.';
   launch = {
     location: 'https://plnkr.co/edit/?p=preview',
     tooltip: `Edit in plunker`
@@ -87,6 +107,15 @@ export class InputFormExample {}
   formComponent: FormGroup;
   payload: string;
 
+  config = {
+    border: '1px solid #d72000',
+    body_font_size: '0.875em',
+    box_shadow: '0 0 15px #bfbfbf',
+    source_font_size: '0.875em'
+  };
+
+  sizeTypes = ['em', 'px', 'rem'];
+
   /**
    * Creates an instance of AppComponent.
    * @param {FormBuilder} formBuilder
@@ -97,6 +126,7 @@ export class InputFormExample {}
       firstname: 'Ścibor',
       lastname: 'Rudnicki',
       address: 'Głuszyna',
+      address2: '253',
       city: 'Poznań',
       postalCode: '61-329'
     });
@@ -105,7 +135,17 @@ export class InputFormExample {}
       // config
       config: formBuilder.group({
         border: this.config.border,
-        box_shadow: this.config.box_shadow
+        body_font_size: this.config.body_font_size,
+        box_shadow: this.config.box_shadow,
+        source_font_size: this.config.source_font_size
+      }),
+
+      selected: formBuilder.group({
+        body_font_size: '0.875',
+        body_font_size_in: 'em',
+
+        source_font_size: '0.875',
+        source_font_size_in: 'em'
       }),
 
       // rest
@@ -120,19 +160,47 @@ export class InputFormExample {}
     });
   }
 
-  submit(form) {
+  /**
+   * @param {any} e
+   * @param {any} sidenav
+   * @memberof AppComponent
+   */
+  cancel(e, sidenav): void {
+    e.preventDefault();
+    sidenav.close();
+  }
+
+  /**
+   * @param {any} form
+   * @returns {boolean} false
+   * @memberof AppComponent
+   */
+  submit(form): boolean {
     this.payload = JSON.stringify(form.value);
-    console.log(JSON.stringify(form.value));
+    console.log(this.payload);
     return false;
   }
 
-  submitComponent(form) {
+  /**
+   * @param {any} form
+   * @returns {boolean} false
+   * @memberof AppComponent
+   */
+  submitComponent(form): boolean {
     console.log(JSON.stringify(form.value));
+    console.log(form.value);
+
     for (const key in form.value) {
       if (key) {
         this[key] = form.value[key];
+        if (key === 'config') {
+          this[key] = Object.assign({}, this[key], {
+            body_font_size: `${form.value.selected.body_font_size}${form.value.selected.body_font_size_in}`,
+            source_font_size: `${form.value.selected.source_font_size}${form.value.selected.source_font_size_in}`
+          });
+        }
       }
-    }
+    };
     return false;
   }
 }
