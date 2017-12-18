@@ -1,14 +1,23 @@
 
 // external
-import { NO_ERRORS_SCHEMA, ViewChild } from '@angular/core';
+import { NO_ERRORS_SCHEMA, ViewChild, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CompatibilityModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatTabsModule,
+  MatTooltipModule
+} from '@angular/material';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { By } from '@angular/platform-browser';
 import { TestBed, async, inject, ComponentFixture } from '@angular/core/testing';
 
 import { PrismModule } from '@ngx-prism/core';
 import { DocsExampleComponent } from './docs-example.component';
+// import { DocsExampleModule } from './docs-example.module';
+
+// import { PackageConfigInterface } from './docs-example.interface';
+export let PACKAGE_CONFIG_TOKEN = new InjectionToken<any>('package.config');
 
 beforeAll(() => {
   TestBed.resetTestEnvironment();
@@ -29,8 +38,19 @@ describe('DocsExampleComponent', () => {
       ],
       imports: [
         CommonModule,
-        CompatibilityModule,
+
+        // @angular/material
+        MatButtonModule,
+        MatIconModule,
+        MatTabsModule,
+        MatTooltipModule,
+
+        // @ngx-prism,
+        // DocsExampleModule,
         PrismModule
+      ],
+      providers: [
+        { provide: PACKAGE_CONFIG_TOKEN, useValue: {} }
       ]
     }).compileComponents();
   }));
