@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@ngx-docs/example/dist/docs-example.scss"; // added
+// @import "./app/src/docs-example.scss"; // added
+@import "~@ngx-docs/api/dist/docs-api.scss";
 @import url('https://fonts.googleapis.com/css?family=Roboto'); // added
 @import "~prismjs/themes/prism.css"; // added
 @import "~@angular/material/prebuilt-themes/indigo-pink.css"; // added
@@ -11,14 +13,32 @@ html, body, material-app, mat-sidenav-container {
   font-family: 'Roboto', sans-serif;
 }
 mat-sidenav {
-  width: 500px;
   padding: 16px;
-  background-color: #fafafa !important;
+  width: 100%;
+  box-shadow: -20px 0 50px -20px rgba(0,0,0,0.1);
+  &.xs {
+    width: 100vw;
+  }
+  &.sm {
+    width: 35vw;
+    @media screen and (max-width: 650px ) {
+      width: 100vw;
+    }
+  }
+  &.md {
+    max-width: 45vw;
+  }
+  &.xl,
+  &.lg {
+    width: 50vw;
+  }
 }
 .my-content {
-  width: calc(100% - 100px);
-  height: calc(100% - 100px);
-  padding: 50px;
+  flex-direction: column !important;
+  width: 100%;
+  height: auto;
+  padding: 100px 16px;
+  padding-bottom: 0px;
 }
 .mat-drawer-container {
   background-color: #ffffff !important;
