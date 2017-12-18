@@ -2,7 +2,9 @@
 
   <!-- title -->
   <div class="ngx-docs-example-title">
-    {{title}}
+    <span class="title" fxHide.xs fxShow.sm-xl>
+      {{title}}
+    </span>
     <span class="spacer"></span>
     <button mat-button (click)="switchActive('code')" matTooltip="{{view?.code?.tooltip}}">
       <mat-icon>code</mat-icon>
@@ -18,9 +20,9 @@
   <!-- source -->
   <div class="ngx-docs-example-source" *ngIf="view?.code?.active === true">
     <mat-tab-group >
-      <mat-tab label="HTML" *ngIf="html"><prism-highlight [language]="'html'" [code]="html"></prism-highlight></mat-tab>
-      <mat-tab label="TS" *ngIf="ts" ><prism-highlight [language]="'javascript'" [code]="ts"></prism-highlight></mat-tab>
-      <mat-tab label="CSS" *ngIf="css" ><prism-highlight [language]="'css'" [code]="css"></prism-highlight></mat-tab>
+      <mat-tab label="HTML" *ngIf="html"><ngx-prism [language]="'html'" [code]="html"></ngx-prism></mat-tab>
+      <mat-tab label="TS" *ngIf="ts" ><ngx-prism [language]="'javascript'" [code]="ts"></ngx-prism></mat-tab>
+      <mat-tab label="CSS" *ngIf="css" ><ngx-prism [language]="'css'" [code]="css"></ngx-prism></mat-tab>
     </mat-tab-group>
   </div>
 
