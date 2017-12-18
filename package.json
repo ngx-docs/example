@@ -1,6 +1,6 @@
 {
   "name": "@ngx-docs/example",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Angular 5 module to display code examples for creating documentation.",
   "author": "Ścibor Rudnicki <scibor.rudnicki@wwwdev.io> (http://ngx-docs.wwwwdev.io)",
   "homepage": "https://github.com/ngx-docs/example#readme",
